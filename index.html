@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>grimeDetector</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="background1">
+    <div class="background2">
+        <div class="container nopadding">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1><strong>grime</strong>detector</h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <br>
+                    <a href="https://github.com/tarnawski/grime-detector-api" target="_blank"><img
+                            src="images\github.png"></a>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="images\commentlist.png">
+                </div>
+                <div class="col-sm-6">
+                    <h2>Tool to detect vulgar language based on <strong>artificial intelligence</strong>...</h2>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4 text-center">
+                            <h1>
+                                <div id="status-languages"></div>
+                            </h1>
+                            <h3>LANGUAGES</h3>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <h1>
+                                <div id="status-checked"></div>
+                            </h1>
+                            <h3>CHECKED TEXT</h3>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <h1>
+                                <div id="status-grime"></div>
+                            </h1>
+                            <h3>GRIME FOUND</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Try <strong>grime</strong>detector</h1>
+            <br>
+            <div id="form">
+                <form role="form">
+                    <div id="form-group-text" class="form-group">
+                        <label for="text">Text to check</label>
+                        <textarea class="form-control" id="text" rows="4"></textarea>
+                    </div>
+                </form>
+                <button onclick='check()' class="btn btn-default btn-block">Check text</button>
+            </div>
+            <div id="report"></div>
+        </div>
+        <div class="col-sm-6">
+            <h1>Basic example of use with jQuery:</h1>
+            <br>
+            <pre>
+    $.post('api-url.com', {
+            text: "Text to check",
+            correct: true
+        })
+        .done(function( data ) {
+            console.log( data );
+        });
+    </pre>
+        </div>
+    </div>
+    <div class="footer">
+        <hr/>
+        Made with <strike>love</strike> beer by <a href="https://github.com/tarnawski" target="_blank">@tarnawski</a>.
+        Be an awesome hacker, <a href="https://github.com/tarnawski/grime-detector-api" target="_blank">fork me <img
+            src="images/octocat.png"/></a>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
