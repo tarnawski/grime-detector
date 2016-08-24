@@ -65,19 +65,24 @@
             <div id="form">
                 <form role="form">
                     <div id="form-group-text" class="form-group">
-                        <label for="text">Text to check</label>
+                        <label for="text">Text to check (maximum length of 255 characters)</label>
                         <textarea class="form-control" id="text" rows="4"></textarea>
                     </div>
                 </form>
                 <button onclick='check()' class="btn btn-default btn-block">Check text</button>
             </div>
-            <div id="report"></div>
+            <div class="panel panel-default" id="report">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>grime</strong>detector report:</h3>
+                </div>
+                <div class="panel-body" id="report-content"></div>
+            </div>
         </div>
         <div class="col-sm-6">
             <h1>Basic example of use with jQuery:</h1>
             <br>
             <pre>
-    $.post('api-url.com', {
+    $.post('http://grimedetector-api.ttarnawski.usermd.net/check', {
             text: "Text to check",
             correct: true
         })
@@ -89,9 +94,17 @@
     </div>
     <div class="footer">
         <hr/>
-        Made with <strike>love</strike> beer by <a href="https://github.com/tarnawski" target="_blank">@tarnawski</a>.
-        Be an awesome hacker, <a href="https://github.com/tarnawski/grime-detector-api" target="_blank">fork me <img
-            src="images/octocat.png"/></a>
+        <div class="row">
+            <div class="col-sm-6">
+                Made with <strike>love</strike> beer by <a href="https://github.com/tarnawski" target="_blank">@tarnawski</a>.
+                Be an awesome hacker, <a href="https://github.com/tarnawski/grime-detector-api" target="_blank">fork me
+                <img src="images/octocat.png"/></a>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="http://grimedetector-api.ttarnawski.usermd.net/doc" target="_blank">API documentation</a>
+            </div>
+        </div>
+
     </div>
 </div>
 

@@ -3,6 +3,7 @@
 const BASIC_URL = 'http://grimedetector-api.ttarnawski.usermd.net';
 
 var vm_report;
+var vm_report_content;
 var vm_languages;
 var vm_checked;
 var vm_grime;
@@ -10,6 +11,7 @@ var vm_text;
 
 $(document).ready(function () {
     vm_report = $("#report");
+    vm_report_content = $("#report-content");
     vm_languages = $("#status-languages");
     vm_checked = $("#status-checked");
     vm_grime = $("#status-grime");
@@ -42,7 +44,11 @@ function check() {
     $.post( BASIC_URL+'/check', JSON.stringify(data))
         .done(function( response ) {
             $("#form").hide();
-            vm_report.html('<h2>STATUS: ' + response.STATUS+'</h2>');
+            if (response.STATUS == 'OK'){
+                vm_report_content.html('<strong>Not found any grime in text:</strong><br><br>"' + textValue + '"');
+            } else {
+                vm_report_content.html('<strong>Below text contains grime:<br><br></strong>"' + textValue + '"');
+            }
             vm_report.show();
             console.log(response);
         })
