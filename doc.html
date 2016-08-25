@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>grimeDetector</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="background1">
+    <div class="background2">
+        <div class="container nopadding">
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="index.html"><h1><strong>grime</strong>detector</h1></a>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <br>
+                    <a href="https://github.com/tarnawski/grime-detector-api" target="_blank"><img
+                            src="images\github.png"></a>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="images\commentlist.png">
+                </div>
+                <div class="col-sm-6">
+                    <h2>Tool to detect vulgar language based on <strong>artificial intelligence</strong>...</h2>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4 text-center">
+                            <h1>
+                                <div id="status-checked"></div>
+                            </h1>
+                            <h3>CHECKED TEXT</h3>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <h1>
+                                <div id="status-training_data"></div>
+                            </h1>
+                            <h3>TRAINING DATA</h3>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <h1>
+                                <div id="status-efficiency"></div>
+                            </h1>
+                            <h3>EFFICIENCY</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h1><strong>grime</strong>detector documentation</h1>
+    <h3>REST API endpoints:</h3>
+    <table class="table table-bordered">
+        <tr>
+            <td><strong>URL:</strong></td>
+            <td>http://grimedetector-api.ttarnawski.usermd.net/check</td>
+        </tr>
+        <tr>
+            <td><strong>METHOD</strong></td>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <td><strong>BODY</strong></td>
+            <td>
+    <pre><code>
+        {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
+    </code></pre>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>RESPONSE</strong></td>
+            <td>
+    <pre><code>
+        {
+            "STATUS": "OK"
+        }
+    </code></pre>
+            </td>
+        </tr>
+    </table>
+    <div class="footer">
+        <hr/>
+        <div class="row">
+            <div class="col-sm-6">
+                Made with <strike>love</strike> beer by <a href="https://github.com/tarnawski" target="_blank">@tarnawski</a>.
+                Be an awesome hacker, <a href="https://github.com/tarnawski/grime-detector-api" target="_blank">fork me
+                <img src="images/octocat.png"/></a>
+            </div>
+             <div class="col-sm-6 text-right"><span class="glyphicon glyphicon-book"></span> <a href="doc.html">Read documentation</a></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

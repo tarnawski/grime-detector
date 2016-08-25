@@ -36,6 +36,10 @@
     font-size: 150%;
 }
 
+.background2 a:link {
+    text-decoration: none;
+}
+
 .nopadding {
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
@@ -43,4 +47,5 @@
 
 .footer {
     margin-top: 80px;
+    margin-bottom: 10px;
 }
