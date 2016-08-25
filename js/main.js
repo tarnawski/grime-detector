@@ -4,17 +4,17 @@ const BASIC_URL = 'http://grimedetector-api.ttarnawski.usermd.net';
 
 var vm_report;
 var vm_report_content;
-var vm_languages;
 var vm_checked;
+var vm_training_data;
 var vm_grime;
-var vm_text;
+var vm_efficiency;
 
 $(document).ready(function () {
     vm_report = $("#report");
     vm_report_content = $("#report-content");
-    vm_languages = $("#status-languages");
     vm_checked = $("#status-checked");
-    vm_grime = $("#status-grime");
+    vm_training_data = $("#status-training_data");
+    vm_efficiency = $("#status-efficiency");
     vm_text = $("#text");
     vm_report.hide();
     fetchData();
@@ -22,9 +22,9 @@ $(document).ready(function () {
 
 function fetchData() {
     $.getJSON(BASIC_URL+'/status', function (data) {
-        vm_languages.html(data.languages);
         vm_checked.html(data.checked);
-        vm_grime.html(data.grime);
+        vm_training_data.html(data.training_data);
+        vm_efficiency.html(data.efficiency+'%');
     });
 }
 
