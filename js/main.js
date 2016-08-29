@@ -38,17 +38,18 @@ function check() {
 
     data = {
         text: textValue,
-        correct: true
+        output: "complex"
     };
 
     $.post( BASIC_URL+'/check', JSON.stringify(data))
         .done(function( response ) {
             $("#form").hide();
-            if (response.STATUS == 'OK'){
-                vm_report_content.html('<strong>Not found any grime in text:</strong><br><br>"' + textValue + '"');
-            } else {
-                vm_report_content.html('<strong>Below text contains grime:<br><br></strong>"' + textValue + '"');
-            }
+            vm_report_content.html('<strong>TEXT: </strong>"' + response.text + '" <br> ' +
+                '<strong>PROBABILITY: </strong>' + response.probability + ' <br> ' +
+                '<strong>THRESHOLD: </strong>' + response.threshold + ' <br> ' +
+                '<strong>STATUS: </strong>' + response.status + ' <br> '
+            );
+
             vm_report.show();
             console.log(response);
         })

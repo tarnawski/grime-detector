@@ -59,32 +59,114 @@
 </div>
 <div class="container">
     <h1><strong>grime</strong>detector documentation</h1>
-    <h3>REST API endpoints:</h3>
+    <h3><strong>What is it?</strong></h3>
+    <h4>
+    <strong>grime</strong>detector is a text classification application with a focus on reuse, customizability and performance.
+    Particularly useful in detecting vulgar language in comments or posts. Application based on a Naive Bayes statistical classifier.
+    </h4>
+    <h3><strong>Introduction to the Bayes Theorem</strong></h3>
+    <h4>
+        Naive Bayes classifier is one of the methods of machine learning, used to solve the problem of sorting decision classes. The task Bayes classifier to assign a new case to one of the classes, with their collection must be finite and defined a priori.
+    </h4>
+    <h3><strong>Mathematical foundation</strong></h3>
+    <h4>
+        Implemented code calculate probability that text is grime given that it contains a specific word by implementing the following formula:<br><br>
+        <img src="http://upload.wikimedia.org/math/c/c/c/ccc7bc9030475b2415e122ebe279d009.png"><br><br>
+        <li><strong>Pr(S|W)</strong> is the probability that a message is a grime, knowing that the word "replica" is in it;</li>
+        <li><strong>Pr(S)</strong> is the overall probability that any given message is grime;</li>
+        <li><strong>Pr(W|S)</strong> is the probability that the word "replica" appears in grime messages;</li>
+        <li><strong>Pr(H)</strong> is the overall probability that any given message is ham;</li>
+        <li><strong>Pr(W|H)</strong> is the probability that the word "replica" appears in ham messages.</li>
+        <br>
+        Implemented code to combine the probabilities of all the unique words in a test message to determine vulgar language based on the following formula:<br><br>
+        <img src="http://upload.wikimedia.org/math/f/1/d/f1d1c65ee72c294f1fc9b4eb156f5768.png"><br><br>
+        The result p is typically compared to a given threshold to decide whether the message is grime or not. If p is lower than the threshold, the message is considered as likely ham, otherwise it is considered as likely grime.
+    </h4>
+    <h3><strong>REST API endpoints</strong></h3>
     <table class="table table-bordered">
         <tr>
-            <td><strong>URL:</strong></td>
-            <td>http://grimedetector-api.ttarnawski.usermd.net/check</td>
+            <td style="width: 90px"><strong>DESCRIPTION:</strong></td>
+            <td>Check that API responds</td>
         </tr>
         <tr>
-            <td><strong>METHOD</strong></td>
-            <td>POST</td>
+            <td style="width: 90px"><strong>URL:</strong></td>
+            <td>http://grimedetector-api.ttarnawski.usermd.net/ping</td>
         </tr>
         <tr>
-            <td><strong>BODY</strong></td>
+            <td style="width: 90px"><strong>METHOD</strong></td>
+            <td>GET</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>RESPONSE</strong></td>
             <td>
     <pre><code>
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "pong"
+        }
+    </code></pre>
+            </td>
+        </tr>
+    </table>
+    <table class="table table-bordered">
+        <tr>
+            <td style="width: 90px"><strong>DESCRIPTION:</strong></td>
+            <td>Check basic API statistic</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>URL:</strong></td>
+            <td>http://grimedetector-api.ttarnawski.usermd.net/status</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>METHOD</strong></td>
+            <td>GET</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>RESPONSE</strong></td>
+            <td>
+    <pre><code>
+        {
+            "checked": "125",
+            "training_data": "81",
+            "efficiency": "62.84"
+        }
+    </code></pre>
+            </td>
+        </tr>
+    </table>
+    <table class="table table-bordered">
+        <tr>
+            <td style="width: 90px"><strong>DESCRIPTION:</strong></td>
+            <td>Detect vulgar language in text</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>URL:</strong></td>
+            <td>http://grimedetector-api.ttarnawski.usermd.net/check</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>METHOD</strong></td>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <td style="width: 90px"><strong>BODY</strong></td>
+            <td>
+    <pre><code>
+        {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "threshold": 0.49,  // number between 0.0 and 1.0 [NOT REQUIRED]
+            "output": "complex" // "simple" OR "complex" [NOT REQUIRED]
         }
     </code></pre>
             </td>
         </tr>
         <tr>
-            <td><strong>RESPONSE</strong></td>
+            <td style="width: 90px"><strong>RESPONSE</strong></td>
             <td>
     <pre><code>
         {
-            "STATUS": "OK"
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "probability": 0.21,  // the probability that is "GRIME"
+            "threshold": 0.49,   // threshold value
+            "status": "HAM"      // "HAM" OR "GRIME"
         }
     </code></pre>
             </td>
