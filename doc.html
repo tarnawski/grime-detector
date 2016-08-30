@@ -26,24 +26,24 @@
             </div>
             <br><br>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                     <img src="images\commentlist.png">
                 </div>
-                <div class="col-sm-6">
-                    <h2>Tool to detect vulgar language based on <strong>artificial intelligence</strong>...</h2>
+                <div class="col-sm-7">
+                    <h2>Tool to recognition <strong class="text-danger">NEGATIVE</strong> comments based on <strong>artificial intelligence</strong>...</h2>
                     <br>
                     <div class="row">
                         <div class="col-sm-4 text-center">
                             <h1>
                                 <div id="status-checked"></div>
                             </h1>
-                            <h3>CHECKED TEXT</h3>
+                            <h3>CHECKED COMMENTS</h3>
                         </div>
                         <div class="col-sm-4 text-center">
                             <h1>
                                 <div id="status-training_data"></div>
                             </h1>
-                            <h3>TRAINING DATA</h3>
+                            <h3>WORDS IN DICTIONARY</h3>
                         </div>
                         <div class="col-sm-4 text-center">
                             <h1>
@@ -62,7 +62,7 @@
     <h3><strong>What is it?</strong></h3>
     <h4>
     <strong>grime</strong>detector is a text classification application with a focus on reuse, customizability and performance.
-    Particularly useful in detecting vulgar language in comments or posts. Application based on a Naive Bayes statistical classifier.
+    Particularly useful in detecting negative (or positive) comments or just texts. Application based on a Naive Bayes statistical classifier.
     </h4>
     <h3><strong>Introduction to the Bayes Theorem</strong></h3>
     <h4>
@@ -70,17 +70,17 @@
     </h4>
     <h3><strong>Mathematical foundation</strong></h3>
     <h4>
-        Implemented code calculate probability that text is grime given that it contains a specific word by implementing the following formula:<br><br>
+        Implemented code calculate probability that text is negative given that it contains a specific word by implementing the following formula:<br><br>
         <img src="http://upload.wikimedia.org/math/c/c/c/ccc7bc9030475b2415e122ebe279d009.png"><br><br>
-        <li><strong>Pr(S|W)</strong> is the probability that a message is a grime, knowing that the word "replica" is in it;</li>
-        <li><strong>Pr(S)</strong> is the overall probability that any given message is grime;</li>
-        <li><strong>Pr(W|S)</strong> is the probability that the word "replica" appears in grime messages;</li>
-        <li><strong>Pr(H)</strong> is the overall probability that any given message is ham;</li>
-        <li><strong>Pr(W|H)</strong> is the probability that the word "replica" appears in ham messages.</li>
+        <li><strong>Pr(S|W)</strong> is the probability that a comment is negative, knowing that the word "replica" is in it;</li>
+        <li><strong>Pr(S)</strong> is the overall probability that any given comment is negative;</li>
+        <li><strong>Pr(W|S)</strong> is the probability that the word "replica" appears in negative comment;</li>
+        <li><strong>Pr(H)</strong> is the overall probability that any given comment is positive;</li>
+        <li><strong>Pr(W|H)</strong> is the probability that the word "replica" appears in positive comments.</li>
         <br>
-        Implemented code to combine the probabilities of all the unique words in a test message to determine vulgar language based on the following formula:<br><br>
+        Implemented code to combine the probabilities of all the unique words in a test comment to determine negative text based on the following formula:<br><br>
         <img src="http://upload.wikimedia.org/math/f/1/d/f1d1c65ee72c294f1fc9b4eb156f5768.png"><br><br>
-        The result p is typically compared to a given threshold to decide whether the message is grime or not. If p is lower than the threshold, the message is considered as likely ham, otherwise it is considered as likely grime.
+        The result p is typically compared to a given threshold to decide whether the comment is negative or not. If p is lower than the threshold, the comment is considered as likely positive, otherwise it is considered as likely negative.
     </h4>
     <h3><strong>REST API endpoints</strong></h3>
     <table class="table table-bordered">
@@ -110,33 +110,7 @@
     <table class="table table-bordered">
         <tr>
             <td style="width: 90px"><strong>DESCRIPTION:</strong></td>
-            <td>Check basic API statistic</td>
-        </tr>
-        <tr>
-            <td style="width: 90px"><strong>URL:</strong></td>
-            <td>http://grimedetector-api.ttarnawski.usermd.net/status</td>
-        </tr>
-        <tr>
-            <td style="width: 90px"><strong>METHOD</strong></td>
-            <td>GET</td>
-        </tr>
-        <tr>
-            <td style="width: 90px"><strong>RESPONSE</strong></td>
-            <td>
-    <pre><code>
-        {
-            "checked": "125",
-            "training_data": "81",
-            "efficiency": "62.84"
-        }
-    </code></pre>
-            </td>
-        </tr>
-    </table>
-    <table class="table table-bordered">
-        <tr>
-            <td style="width: 90px"><strong>DESCRIPTION:</strong></td>
-            <td>Detect vulgar language in text</td>
+            <td>Recognition text</td>
         </tr>
         <tr>
             <td style="width: 90px"><strong>URL:</strong></td>
@@ -164,9 +138,9 @@
     <pre><code>
         {
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "probability": 0.21,  // the probability that is "GRIME"
-            "threshold": 0.49,   // threshold value
-            "status": "HAM"      // "HAM" OR "GRIME"
+            "probability": 0.21,    // the probability that is "NEGATIVE"
+            "threshold": 0.49,      // threshold value
+            "status": "POSITIVE"    // "POSITIVE" OR "NEGATIVE"
         }
     </code></pre>
             </td>
